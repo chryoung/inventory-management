@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: one
+  price: 9.99
+  record_on: 2022-03-25 00:42:34
+
+two:
+  item_id: two
+  price: 9.99
+  record_on: 2022-03-25 00:42:34

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Item: one
+  Quantity: 9.99
+  Unit: one
+  InStockOn: 2022-03-25 00:52:30
+  ProducedOn: 2022-03-25 00:52:30
+  ShelfLife: 1
+  ExpireOn: 2022-03-25 00:52:30
+
+two:
+  Item: two
+  Quantity: 9.99
+  Unit: two
+  InStockOn: 2022-03-25 00:52:30
+  ProducedOn: 2022-03-25 00:52:30
+  ShelfLife: 1
+  ExpireOn: 2022-03-25 00:52:30
