@@ -1,37 +1,37 @@
 <div id="<%= dom_id inventory %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">Item:</strong>
-    <%= inventory.Item_id %>
+    <%= inventory.item_id %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Quantity:</strong>
-    <%= inventory.Quantity %>
+    <%= inventory.quantity %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Unit:</strong>
-    <%= inventory.Unit_id %>
+    <%= inventory.unit_id %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Instockon:</strong>
-    <%= inventory.InStockOn %>
+    <%= inventory.in_stock_on %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Producedon:</strong>
-    <%= inventory.ProducedOn %>
+    <%= inventory.produced_on %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Shelflife:</strong>
-    <%= inventory.ShelfLife %>
+    <%= inventory.shelf_life %> Days
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Expireon:</strong>
-    <%= inventory.ExpireOn %>
+    <%= inventory.expire_on %>
   </p>
 
   <% if action_name != "show" %>

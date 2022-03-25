@@ -25,15 +25,13 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-            <%= link_to "Inventory", inventories_url, class: nav_button_class(inventories_path) %>
+            <%= link_to "Inventories", inventories_url, class: nav_button_class(inventories_path) %>
 
-            <%= link_to "Item", items_url, class: nav_button_class(items_path) %>
+            <%= link_to "Items", items_url, class: nav_button_class(items_path) %>
 
-            <%= link_to "Price", prices_url, class: nav_button_class(prices_path) %>
+            <%= link_to "Storages", storages_url, class: nav_button_class(storages_path) %>
 
-            <%= link_to "Storage", storages_url, class: nav_button_class(storages_path) %>
-
-            <%= link_to "Unit", units_url, class: nav_button_class(units_path) %>
+            <%= link_to "Units", units_url, class: nav_button_class(units_path) %>
           </div>
         </div>
       </div>
@@ -43,15 +41,13 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="sm:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
-      <%= link_to "Inventory", inventories_url, class: nav_button_class_mobile(inventories_path) %>
+      <%= link_to "Inventories", inventories_url, class: nav_button_class_mobile(inventories_path) %>
 
-      <%= link_to "Item", items_url, class: nav_button_class_mobile(items_path) %>
+      <%= link_to "Items", items_url, class: nav_button_class_mobile(items_path) %>
 
-      <%= link_to "Price", prices_url, class: nav_button_class_mobile(prices_path) %>
+      <%= link_to "Storages", storages_url, class: nav_button_class_mobile(storages_path) %>
 
-      <%= link_to "Storage", storages_url, class: nav_button_class_mobile(storages_path) %>
-
-      <%= link_to "Unit", units_url, class: nav_button_class_mobile(units_path) %>
+      <%= link_to "Units", units_url, class: nav_button_class_mobile(units_path) %>
     </div>
   </div>
 </nav>

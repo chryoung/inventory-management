@@ -2,7 +2,7 @@ require "test_helper"
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @item = items(:one)
+    @item = items(:bottle_of_water)
   end
 
   test "should get index" do

@@ -27,8 +27,13 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :total_price %>
+    <%= form.number_field :quantity, step: 0.1, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :storage_id %>
-    <%= form.collection_select :storage_id, Storage.all, :id, :location, { :prompt => true }, { :class => "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+    <%= form.collection_select :storage_id, Storage.all, :id, :location, { prompt: true }, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
   </div>
 
   <div class="my-5">
@@ -43,7 +48,21 @@
 
   <div class="my-5">
     <%= form.label :shelf_life %>
-    <%= form.number_field :shelf_life, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <div class="flex">
+        <%= form.fields_for :shelf_life do |shelf_life_form| %>
+          <%= shelf_life_form.number_field :number, step: 1, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 mr-2 basis-4/5" %>
+          <%= shelf_life_form.select :date_unit,
+                options_for_select(
+                  [
+                    ["Year", "year"],
+                    ["Month", "month"],
+                    ["Day", "day"]
+                  ],
+                  "year"),
+                {},
+                { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 basis-1/5" } %>
+      </div>
+    <% end %>
   </div>
 
   <div class="my-5">

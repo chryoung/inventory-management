@@ -2,7 +2,7 @@ require "test_helper"
 
 class StoragesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @storage = storages(:one)
+    @storage = storages(:refrigerator)
   end
 
   test "should get index" do
