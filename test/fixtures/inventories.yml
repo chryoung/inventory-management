@@ -9,7 +9,7 @@ one:
   in_stock_on: 2022-03-25 00:52:30
   produced_on: 2022-03-25 00:52:30
   shelf_life: 1
-  expire_on: 2022-03-25 00:52:30
+  shelf_life_unit: 1
 
 two:
   item: two
@@ -19,5 +19,5 @@ two:
   storage: two
   in_stock_on: 2022-03-25 00:52:30
   produced_on: 2022-03-25 00:52:30
-  shelf_life: 1
-  expire_on: 2022-03-25 00:52:30
+  shelf_life: 2
+  shelf_life_unit: 2

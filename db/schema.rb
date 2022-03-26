@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_25_084134) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_26_091404) do
   create_table "inventories", force: :cascade do |t|
     t.integer "item_id", null: false
     t.decimal "quantity", precision: 32, scale: 6
@@ -18,11 +18,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_25_084134) do
     t.datetime "in_stock_on"
     t.datetime "produced_on"
     t.integer "shelf_life"
-    t.datetime "expire_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price", precision: 10, scale: 2
     t.integer "storage_id", default: 1, null: false
+    t.integer "shelf_life_unit"
     t.index ["item_id"], name: "index_inventories_on_item_id"
     t.index ["storage_id"], name: "index_inventories_on_storage_id"
     t.index ["unit_id"], name: "index_inventories_on_unit_id"

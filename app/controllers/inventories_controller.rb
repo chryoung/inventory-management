@@ -65,26 +65,17 @@ class InventoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def inventory_params
-      permitted_params = params.require(:inventory).permit(:item_id, :quantity, :unit_id, :total_price, :storage_id, :in_stock_on, :produced_on, :expire_on, shelf_life: [:number, :date_unit])
-
-      shelf_life = permitted_params[:shelf_life][:number].to_i
-      if permitted_params[:shelf_life][:date_unit] == "month"
-        shelf_life *= 30
-      elsif permitted_params[:shelf_life][:date_unit] == "year"
-        shelf_life *= 365
-      end
-
-      expire_on = permitted_params[:expire_on]
-      if expire_on.nil? and not permitted_params[:produced_on].nil?
-        expire_on = permitted_params[:produced_on] + shelf_life
-      end
-
-      new_params = permitted_params.to_hash
-      new_params["shelf_life"] = shelf_life
-      new_params["expire_on"] = expire_on
-      new_params["price"] = new_params.fetch(:total_price, 0) / new_params.fetch(:quantity, 1)
-      new_params.delete "total_price"
-
-      return new_params
+      permitted_params = params.require(:inventory).permit(
+        :item_id,
+        :quantity,
+        :unit_id,
+        :total_price,
+        :storage_id,
+        :in_stock_on,
+        :produced_on,
+        :shelf_life,
+        :shelf_life_unit,
+        :expire_on
+      )
     end
 end

@@ -19,17 +19,14 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Inventory.count") do
       post inventories_url, params: {
        inventory: {
-         expire_on: @inventory.expire_on,
          in_stock_on: @inventory.in_stock_on,
          item_id: @inventory.item_id,
          produced_on: @inventory.produced_on,
          total_price: 100,
          storage_id: @inventory.storage_id,
          quantity: @inventory.quantity,
-         shelf_life: {
-           number: 2,
-           date_unit: "year"
-         },
+         shelf_life: 2,
+         shelf_life_unit: "Year",
          unit_id: @inventory.unit_id
        }
      }
@@ -51,17 +48,14 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
   test "should update inventory" do
     patch inventory_url(@inventory), params: {
       inventory: {
-        expire_on: @inventory.expire_on,
         in_stock_on: @inventory.in_stock_on,
         item_id: @inventory.item_id,
         produced_on: @inventory.produced_on,
         total_price: 100,
         storage_id: @inventory.storage_id,
         quantity: @inventory.quantity,
-        shelf_life: {
-          number: 2,
-          date_unit: "month"
-        },
+        shelf_life: 2,
+        shelf_life_unit: "Month",
         unit_id: @inventory.unit_id
       }
     }
@@ -69,7 +63,17 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should allow empty price" do
-    patch inventory_url(@inventory), params: { inventory: { expire_on: @inventory.expire_on, in_stock_on: @inventory.in_stock_on, item_id: @inventory.item_id, produced_on: @inventory.produced_on, quantity: @inventory.quantity, shelf_life: { number: 2, date_unit: "month" }, unit_id: @inventory.unit_id } }
+    patch inventory_url(@inventory), params: {
+      inventory: {
+        in_stock_on: @inventory.in_stock_on,
+        item_id: @inventory.item_id,
+        produced_on: @inventory.produced_on,
+        quantity: @inventory.quantity,
+        shelf_life: 2,
+        shelf_life_unit: "Month",
+        unit_id: @inventory.unit_id
+      }
+    }
     assert_redirected_to inventory_url(@inventory)
   end
 
