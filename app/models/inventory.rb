@@ -23,7 +23,12 @@ class Inventory < ApplicationRecord
   end
 
   def total_price=(value)
-    price = value.to_d / quantity
+    unless quantity.nil? or quantity == 0
+      price = value.to_d / quantity
+    else
+      price = value.to_d
+      quantity = 1
+    end
   end
 
   def expire_on
