@@ -1,37 +1,57 @@
-<div id="<%= dom_id inventory %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Item:</strong>
-    <%= inventory.item.name %>
-  </p>
+<% if action_name != "index" %>
+  <div id="<%= dom_id inventory %>">
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Item:</strong>
+      <%= inventory.item.name %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Quantity:</strong>
-    <%= inventory.quantity %> <%= inventory.unit.name %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Quantity:</strong>
+      <%= inventory.current_quantity %>  / <%= inventory.quantity %> <%= inventory.unit.name %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">In stock on:</strong>
-    <%= inventory.in_stock_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Price per unit:</strong>
+      <%= inventory.price %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Produced on:</strong>
-    <%= inventory.produced_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Storage location:</strong>
+      <%= inventory.storage.location %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Shelf life:</strong>
-    <%= inventory.shelf_life %> <%= inventory.shelf_life_unit %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">In stock on:</strong>
+      <%= inventory.in_stock_on %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Expire on:</strong>
-    <%= inventory.expire_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Produced on:</strong>
+      <%= inventory.produced_on %>
+    </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this inventory", inventory, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this inventory', edit_inventory_path(inventory), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Shelf life:</strong>
+      <%= inventory.shelf_life %> <%= inventory.shelf_life_unit %>
+    </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Expire on:</strong>
+      <%= inventory.expire_on %>
+    </p>
+  </div>
+<% else %>
+  <tr>
+    <td class="data-cell">
+      <%= link_to inventory.item.name, edit_inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 hidden sm:inline" %>
+      <%= link_to inventory.item.name, inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 inline sm:hidden" %>
+    </td>
+    <td class="data-cell"><%= inventory.current_quantity %>  / <%= inventory.quantity %> <%= inventory.unit.name %></td>
+    <td class="data-cell-sm"><%= inventory.storage.location %></td>
+    <td class="data-cell-sm"><%= inventory.price %></td>
+    <td class="data-cell-sm"><%= inventory.in_stock_on %></td>
+    <td class="data-cell-sm"><%= inventory.produced_on %></td>
+    <td class="data-cell-sm"><%= inventory.shelf_life %> <%= inventory.shelf_life_unit %></td>
+    <td class="data-cell-sm"><%= inventory.expire_on %></td>
+  </tr>
+<% end %>

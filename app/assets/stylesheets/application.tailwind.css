@@ -2,10 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+@layer utilities {
+  .border-spacing-0 {
+    border-spacing: 0;
   }
 }
-*/
+
+@layer components {
+  .btn-primary {
+    @apply rounded-lg py-3 px-5 bg-teal-300 hover:bg-teal-500 text-white font-medium;
+  }
+
+  .btn-secondary {
+    @apply rounded-lg py-3 px-5 bg-slate-100 hover:bg-slate-200 font-medium;
+  }
+
+  .data-table {
+    @apply table-auto w-full mt-10 border-2 border-separate border-spacing-0 border-teal-300 rounded-lg;
+  }
+
+  .data-header {
+    @apply text-left bg-teal-300;
+  }
+
+  .data-cell {
+    @apply p-2;
+  }
+
+  .data-cell-sm {
+    @apply p-2 hidden sm:table-cell;
+  }
+}

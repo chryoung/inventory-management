@@ -22,6 +22,11 @@
   </div>
 
   <div class="my-5">
+    <%= form.label :current_quantity %>
+    <%= form.number_field :current_quantity, step: "any", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :unit_id %>
     <%= form.collection_select :unit_id, Unit.all, :id, :name, { :prompt => true }, { :class => "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
   </div>
@@ -38,12 +43,12 @@
 
   <div class="my-5">
     <%= form.label :in_stock_on %>
-    <%= form.datetime_field :in_stock_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :in_stock_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :produced_on %>
-    <%= form.datetime_field :produced_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :produced_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
@@ -58,6 +63,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn-primary" %>
   </div>
 <% end %>

@@ -16,7 +16,7 @@ class Inventory < ApplicationRecord
 
   def total_price
     unless price.nil? or quantity.nil?
-      price * quantity
+      (price * quantity).round(2)
     else
       0
     end
@@ -24,10 +24,10 @@ class Inventory < ApplicationRecord
 
   def total_price=(value)
     unless quantity.nil? or quantity == 0
-      price = value.to_d / quantity
+      self.price = value.to_d / quantity
     else
-      price = value.to_d
-      quantity = 1
+      self.price = value.to_d
+      self.quantity = 1
     end
   end
 

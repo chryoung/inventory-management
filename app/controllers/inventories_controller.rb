@@ -75,7 +75,8 @@ class InventoriesController < ApplicationController
         :produced_on,
         :shelf_life,
         :shelf_life_unit,
-        :expire_on
+        :expire_on,
+        :current_quantity
       )
     end
 end
