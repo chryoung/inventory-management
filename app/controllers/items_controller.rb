@@ -21,11 +21,17 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
+    item_params, commit = self.item_params
     @item = Item.new(item_params)
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
+        if commit == "Create and continue"
+          format.html { redirect_to new_item_url, notice: "Item was successfully created." }
+        else
+          format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
+        end
+
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +42,10 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
+    item_params, _ = self.item_params
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
+        format.html { redirect_to item_url, notice: "Item was successfully updated." }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +72,8 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name)
+      item_params, commit = params.require([:item, :commit])
+
+      return item_params.permit(:name), commit
     end
 end
