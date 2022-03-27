@@ -7,7 +7,7 @@
 
     <p class="my-5">
       <strong class="block font-medium mb-1">Quantity:</strong>
-      <%= inventory.current_quantity %>  / <%= inventory.quantity %> <%= inventory.unit.name %>
+      <span class=<%= quantity_style inventory %>><%= inventory.current_quantity %> / <%= inventory.quantity %> <%= inventory.unit.name %></span>
     </p>
 
     <p class="my-5">
@@ -46,7 +46,7 @@
       <%= link_to inventory.item.name, edit_inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 hidden sm:inline" %>
       <%= link_to inventory.item.name, inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 inline sm:hidden" %>
     </td>
-    <td class="data-cell"><%= inventory.current_quantity %>  / <%= inventory.quantity %> <%= inventory.unit.name %></td>
+    <td class="data-cell"><span class=<%= quantity_style inventory %>><%= inventory.current_quantity %> / <%= inventory.quantity %> <%= inventory.unit.name %></span></td>
     <td class="data-cell-sm"><%= inventory.storage.location %></td>
     <td class="data-cell-sm"><%= inventory.price %></td>
     <td class="data-cell-sm"><%= inventory.in_stock_on %></td>
