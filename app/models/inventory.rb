@@ -2,7 +2,7 @@ require 'bigdecimal'
 require 'bigdecimal/util'
 
 class Inventory < ApplicationRecord
-  belongs_to :item
+  belongs_to :product
   belongs_to :unit
   belongs_to :storage
 
@@ -29,6 +29,22 @@ class Inventory < ApplicationRecord
       self.price = value.to_d
       self.quantity = 1
     end
+  end
+
+  def quantity_number
+    if quantity.to_i.to_d == quantity
+      return quantity.to_i
+    end
+
+    return quantity
+  end
+
+  def current_quantity_number
+    if current_quantity.to_i.to_d == current_quantity
+      return current_quantity.to_i
+    end
+
+    return current_quantity
   end
 
   def expire_on

@@ -21,7 +21,25 @@
       </tr>
     </thead>
     <tbody>
-      <%= render @inventories %>
+      <% @inventories.each do |inventory| %>
+        <tr>
+          <td class="data-cell">
+            <%= link_to edit_inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 hidden sm:inline" do %>
+              <%= render partial: "products/variant", locals: { product: inventory.product } %>
+            <% end %>
+            <%= link_to inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 inline sm:hidden" do %>
+              <%= render partial: "products/variant", locals: { product: inventory.product } %>
+            <% end %>
+          </td>
+          <td class="data-cell"><span class=<%= quantity_style inventory %>><%= format_number(inventory.current_quantity) %> / <%= format_number(inventory.quantity) %> <%= inventory.unit.name %></span></td>
+          <td class="data-cell-sm"><%= inventory.storage.location %></td>
+          <td class="data-cell-sm"><%= inventory.price %></td>
+          <td class="data-cell-sm"><%= inventory.in_stock_on %></td>
+          <td class="data-cell-sm"><%= inventory.produced_on %></td>
+          <td class="data-cell-sm"><%= inventory.shelf_life %> <%= inventory.shelf_life_unit %></td>
+          <td class="data-cell-sm"><%= inventory.expire_on %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

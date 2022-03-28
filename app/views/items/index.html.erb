@@ -2,10 +2,10 @@
   <%= render "layouts/notice" %>
 
   <div class="flex justify-end items-center">
-    <%= link_to 'New item', new_item_path, class: "btn-primary block" %>
+    <%= link_to 'New item', new_item_path, class: "btn-primary mt-5" %>
   </div>
 
-  <div id="items" class="max-w-2xl mx-auto">
+  <div id="items" class="max-w-sm mx-auto">
     <ul>
       <%= render @items %>
     </ul>

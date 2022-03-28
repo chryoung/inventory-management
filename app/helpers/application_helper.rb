@@ -5,17 +5,25 @@ module ApplicationHelper
 
   def nav_button_class(path)
     if is_path?(path)
-      return "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+      return "active-nav-button"
     else
-      return "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+      return "nav-button"
     end
   end
 
   def nav_button_class_mobile(path)
     if is_path?(path)
-      return "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+      return "active-mobile-nav-button"
     else
-      return "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+      return "mobile-nav-button"
+    end
+  end
+
+  def format_number(n)
+    if n.to_i.to_f == n
+      n.to_i
+    else
+      n
     end
   end
 end

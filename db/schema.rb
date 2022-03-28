@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_27_063234) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_060119) do
   create_table "inventories", force: :cascade do |t|
-    t.integer "item_id", null: false
     t.decimal "quantity", precision: 32, scale: 6
     t.integer "unit_id", null: false
     t.date "in_stock_on"
@@ -24,7 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_063234) do
     t.integer "storage_id", default: 1, null: false
     t.integer "shelf_life_unit"
     t.decimal "current_quantity", precision: 32, scale: 6
-    t.index ["item_id"], name: "index_inventories_on_item_id"
+    t.bigint "product_id", null: false
+    t.index ["product_id"], name: "index_inventories_on_product_id"
     t.index ["storage_id"], name: "index_inventories_on_storage_id"
     t.index ["unit_id"], name: "index_inventories_on_unit_id"
   end
@@ -33,6 +33,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_063234) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "variant"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_products_on_item_id"
   end
 
   create_table "storages", force: :cascade do |t|
@@ -47,7 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_063234) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "inventories", "items"
+  add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "storages"
   add_foreign_key "inventories", "units"
+  add_foreign_key "products", "items"
 end
