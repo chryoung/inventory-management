@@ -1,14 +1,18 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+  <%= render "layouts/notice" %>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Storages</h1>
-    <%= link_to 'New storage', new_storage_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="flex justify-end storages-center">
+    <%= link_to 'New storage', new_storage_path, class: "btn-primary mt-5" %>
   </div>
 
-  <div id="storages" class="min-w-full">
-    <%= render @storages %>
+  <div id="storages" class="max-w-sm mx-auto">
+    <ul>
+      <% @storages.each do |storage| %>
+        <li id="<%= dom_id storage %>" class="py-2 border-b-2 last:border-b-0 border-teal-100 hover:bg-teal-100 flex justify-between">
+          <%= link_to storage.location, storage_path(storage), class: "text-sky-500 hover:text-sky-700 block" %>
+          <%= link_to '×', storage_path(storage), data: { turbo_method: :delete }, class: "text-red-500 hover:text-white hover:bg-red-500 hover:rounded-circle px-2 block" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

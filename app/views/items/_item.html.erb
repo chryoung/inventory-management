@@ -1,4 +1,12 @@
-<li id="<%= dom_id item %>" class="py-2 border-b-2 last:border-b-0 border-teal-100 hover:bg-teal-100 flex justify-between">
-  <%= link_to item.name, edit_item_path(item), class: "text-sky-500 hover:text-sky-700 block" %>
-  <%= link_to '×', item_path(item), data: { turbo_method: :delete }, class: "text-red-500 hover:text-white hover:bg-red-500 hover:rounded-circle px-2 block" %>
-</li>
+<div id="<%= dom_id item %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= item.name %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this item", item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this item', edit_item_path(item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_060119) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_140831) do
+  create_table "consume_histories", force: :cascade do |t|
+    t.integer "inventory_id", null: false
+    t.date "consume_on"
+    t.decimal "quantity", precision: 32, scale: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inventory_id"], name: "index_consume_histories_on_inventory_id"
+  end
+
   create_table "inventories", force: :cascade do |t|
     t.decimal "quantity", precision: 32, scale: 6
     t.integer "unit_id", null: false
@@ -55,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_060119) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "consume_histories", "inventories"
   add_foreign_key "inventories", "products"
   add_foreign_key "inventories", "storages"
   add_foreign_key "inventories", "units"

@@ -24,10 +24,7 @@
       <% @inventories.each do |inventory| %>
         <tr>
           <td class="data-cell">
-            <%= link_to edit_inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 hidden sm:inline" do %>
-              <%= render partial: "products/variant", locals: { product: inventory.product } %>
-            <% end %>
-            <%= link_to inventory_path(inventory), class: "text-sky-500 hover:text-sky-700 inline sm:hidden" do %>
+            <%= link_to inventory_path(inventory), class: "text-sky-500 hover:text-sky-700" do %>
               <%= render partial: "products/variant", locals: { product: inventory.product } %>
             <% end %>
           </td>
