@@ -6,10 +6,14 @@
 
     <%= render @inventory %>
 
-    <%= link_to 'Edit this inventory', edit_inventory_path(@inventory), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this inventory', inventory_path(@inventory), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="flex flex-col">
+      <%= link_to 'Edit this inventory', edit_inventory_path(@inventory), class: "btn-secondary block mb-2" %>
+
+      <%= link_to 'Destroy this inventory', inventory_path(@inventory), class: "btn-secondary block mb-2", data: { turbo_method: :delete } %>
+
+      <%= link_to 'Add', new_inventory_path, class: "btn-primary block mb-2" %>
+
+      <%= link_to 'Back to inventories', inventories_path, class: "btn-secondary block" %>
     </div>
-    <%= link_to 'Back to inventories', inventories_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :consume_histories, only: [:new, :edit, :create, :update, :destroy]
+  resources :items
+  post "items/create_and_continue", to: "items#create_and_continue"
+
   resources :products
+  resources :consume_histories, only: [:new, :edit, :create, :update, :destroy]
   resources :inventories
   resources :units
   resources :storages
-  resources :items
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

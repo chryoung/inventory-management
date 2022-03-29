@@ -22,7 +22,7 @@
 
   <% if action_name != "edit" %>
     <div class="inline">
-      <%= form.submit "Create and continue", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      <%= form.submit "Create and continue", formaction: items_create_and_continue_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
     </div>
   <% end %>
 <% end %>

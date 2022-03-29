@@ -1,24 +1,9 @@
-# README
+# Inventory Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple inventory management system for your home stock
 
-Things you may want to cover:
+## Requirement
 
-* Ruby version
+- Ruby 2.7.5
+- Rails 7
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
