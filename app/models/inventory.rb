@@ -48,13 +48,17 @@ class Inventory < ApplicationRecord
   end
 
   def expire_on
-    if Year?
-      produced_on + shelf_life.years
-    elsif Month?
-      produced_on + shelf_life.months
-    else
-      produced_on + shelf_life.days
+    unless produced_on.nil? or shelf_life.nil?
+      if Year?
+        produced_on + shelf_life.years
+      elsif Month?
+        produced_on + shelf_life.months
+      else
+        produced_on + shelf_life.days
+      end
     end
+
+    nil
   end
 
 end
