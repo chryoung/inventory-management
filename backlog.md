@@ -12,3 +12,5 @@
 - [ ] Show Products on Item show page
 - [ ] Show Inventories on Storage show page
 - [ ] Turbo stream support
+- [ ] Pagination
+- [ ] Lazy-loading
