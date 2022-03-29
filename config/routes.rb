@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :consume_histories, only: [:new, :edit, :create, :destroy]
+  resources :consume_histories, only: [:new, :edit, :create, :update, :destroy]
   resources :products
   resources :inventories
   resources :units

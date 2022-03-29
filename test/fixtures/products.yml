@@ -7,3 +7,11 @@ one:
 two:
   item: two
   variant: MyString
+
+three:
+  item: two
+  variant: MyString
+
+bottle_of_water:
+  item: bottle_of_water
+  variant: "Fuzzy"

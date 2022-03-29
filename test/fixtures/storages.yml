@@ -6,5 +6,8 @@ one:
 two:
   location: MyString
 
+three:
+  location: MyString
+
 refrigerator:
   location: "refrigerator"

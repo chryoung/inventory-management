@@ -2,7 +2,7 @@ require "test_helper"
 
 class ItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @item = items(:bottle_of_water)
+    @item = items(:mug_cup)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create item" do
     assert_difference("Item.count") do
-      post items_url, params: { item: { name: @item.name } }
+      post items_url, params: { item: { name: @item.name }, commit: "Create item" }
     end
 
     assert_redirected_to item_url(Item.last)
@@ -34,7 +34,7 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update item" do
-    patch item_url(@item), params: { item: { name: @item.name } }
+    patch item_url(@item), params: { item: { name: @item.name }, commit: "Update item" }
     assert_redirected_to item_url(@item)
   end
 

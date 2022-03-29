@@ -6,5 +6,11 @@ one:
 two:
   name: MyString
 
+three:
+  name: MyString
+
 bottle_of_water:
   name: "Bottle of Water"
+
+mug_cup:
+  name: "Mug Cup"

@@ -2,7 +2,7 @@ require "test_helper"
 
 class InventoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @inventory = inventories(:one)
+    @inventory = inventories(:three)
   end
 
   test "should get index" do
@@ -20,7 +20,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
       post inventories_url, params: {
        inventory: {
          in_stock_on: @inventory.in_stock_on,
-         item_id: @inventory.item_id,
+         product_id: @inventory.product_id,
          produced_on: @inventory.produced_on,
          total_price: 100,
          storage_id: @inventory.storage_id,
@@ -49,7 +49,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
     patch inventory_url(@inventory), params: {
       inventory: {
         in_stock_on: @inventory.in_stock_on,
-        item_id: @inventory.item_id,
+        product_id: @inventory.product_id,
         produced_on: @inventory.produced_on,
         total_price: 100,
         storage_id: @inventory.storage_id,
@@ -66,7 +66,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
     patch inventory_url(@inventory), params: {
       inventory: {
         in_stock_on: @inventory.in_stock_on,
-        item_id: @inventory.item_id,
+        product_id: @inventory.product_id,
         produced_on: @inventory.produced_on,
         quantity: @inventory.quantity,
         shelf_life: 2,

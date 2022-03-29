@@ -5,11 +5,6 @@ class ConsumeHistoriesControllerTest < ActionDispatch::IntegrationTest
     @consume_history = consume_histories(:one)
   end
 
-  test "should get index" do
-    get consume_histories_url
-    assert_response :success
-  end
-
   test "should get new" do
     get new_consume_history_url
     assert_response :success
@@ -21,11 +16,6 @@ class ConsumeHistoriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to consume_history_url(ConsumeHistory.last)
-  end
-
-  test "should show consume_history" do
-    get consume_history_url(@consume_history)
-    assert_response :success
   end
 
   test "should get edit" do

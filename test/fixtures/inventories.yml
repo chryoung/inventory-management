@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  item: one
+  product: one
   quantity: 9.99
   unit: one
   price: 9.99
@@ -12,11 +12,23 @@ one:
   shelf_life_unit: 1
 
 two:
-  item: two
+  product: two
   quantity: 9.99
   unit: two
   price: 9.99
   storage: two
+  in_stock_on: 2022-03-25 00:52:30
+  produced_on: 2022-03-25 00:52:30
+  shelf_life: 2
+  shelf_life_unit: 2
+
+
+three:
+  product: three
+  quantity: 9.99
+  unit: three
+  price: 9.99
+  storage: three
   in_stock_on: 2022-03-25 00:52:30
   produced_on: 2022-03-25 00:52:30
   shelf_life: 2
