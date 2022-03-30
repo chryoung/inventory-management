@@ -5,6 +5,7 @@ class Inventory < ApplicationRecord
   belongs_to :product
   belongs_to :unit
   belongs_to :storage
+  has_many :consume_histories, dependent: :destroy
 
   enum shelf_life_unit: {
     "Year" => 1,
@@ -59,6 +60,10 @@ class Inventory < ApplicationRecord
     end
 
     return nil
+  end
+
+  def total_consumption
+    consume_histories.sum(:quantity)
   end
 
 end

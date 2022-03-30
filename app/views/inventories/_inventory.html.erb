@@ -1,44 +1,50 @@
 <div id="<%= dom_id inventory %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Product:</strong>
-    <%= link_to product_path(inventory.product), class: "link-primary" do %>
-      <%= render partial: "products/variant", locals: { product: inventory.product } %>
-    <% end %>
-  </p>
+  <div>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Product:</strong>
+      <%= link_to product_path(inventory.product), class: "link-primary" do %>
+        <%= render partial: "products/variant", locals: { product: inventory.product } %>
+      <% end %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Quantity:</strong>
-    <span class=<%= quantity_style inventory %>><%= format_number(inventory.current_quantity) %> / <%= format_number(inventory.quantity) %> <%= inventory.unit.name %></span>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Quantity:</strong>
+      <span class=<%= quantity_style inventory %>><%= format_number(inventory.current_quantity) %> / <%= format_number(inventory.quantity) %> <%= inventory.unit.name %></span>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price per unit:</strong>
-    <%= inventory.price %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Price per unit:</strong>
+      <%= inventory.price %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Storage location:</strong>
-    <%= inventory.storage.location %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Storage location:</strong>
+      <%= inventory.storage.location %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">In stock on:</strong>
-    <%= inventory.in_stock_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">In stock on:</strong>
+      <%= inventory.in_stock_on %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Produced on:</strong>
-    <%= inventory.produced_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Produced on:</strong>
+      <%= inventory.produced_on %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Shelf life:</strong>
-    <%= inventory.shelf_life %> <%= inventory.shelf_life_unit %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Shelf life:</strong>
+      <%= inventory.shelf_life %> <%= inventory.shelf_life_unit %>
+    </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Expire on:</strong>
-    <%= inventory.expire_on %>
-  </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Expire on:</strong>
+      <%= inventory.expire_on %>
+    </p>
+  </div>
+  <div>
+    <%= link_to "Consume product", new_inventory_consume_history_path(inventory), class: "btn-primary block" %>
+    <%= render template: "consume_histories/index" %>
+  </div>
 </div>
 

@@ -1,22 +1,17 @@
-<div id="<%= dom_id consume_history %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Inventory:</strong>
-    <%= consume_history.inventory_id %>
-  </p>
+<tr id="<<%= dom_id consume_history %>">
+  <td><%= consume_history.consume_on %></td>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Consume on:</strong>
-    <%= consume_history.consume_on %>
-  </p>
+  <td><%= consume_history.quantity %></td>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Quantity:</strong>
-    <%= consume_history.quantity %>
-  </p>
+  <td>
+    <%= link_to edit_consume_history_path(consume_history) do %>
+      <i class="fa-solid fa-pen"></i>
+    <% end %>
+  </td>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this consume history", consume_history, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this consume history', edit_consume_history_path(consume_history), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+  <td>
+    <%= link_to consume_history_path(consume_history), data: { turbo_method: :delete } do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </td>
+</tr>

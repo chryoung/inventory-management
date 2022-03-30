@@ -8,11 +8,12 @@ class InventoriesController < ApplicationController
 
   # GET /inventories/1 or /inventories/1.json
   def show
+    @consume_histories = @inventory.consume_histories
   end
 
   # GET /inventories/new
   def new
-    @inventory = Inventory.new
+    @inventory = Inventory.new in_stock_on: Date.today
   end
 
   # GET /inventories/1/edit

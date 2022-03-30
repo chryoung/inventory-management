@@ -1,16 +1,47 @@
 # TODO
 
-- [x] Item, Unit, Storage
-- [x] Inventory, Product
+## Items
+
+- [ ] Create a default Product for a new Item
+
+## Products
+
+- [ ] Show Products on Item show page
+- [ ] Add default shelf life for Product
+
+## Inventories
+
+- [ ] Hide empty Inventories by default
+- [ ] Show Inventories on Product show page
+- [ ] Show Inventories on Storage show page
+- [ ] Create a Inventory with default shelf life
+
+## Consume History
+
+- [ ] Show consume history on Inventory show page
+- [ ] Add consume history on Inventory show page
+
+## Category support
+
+- [ ] 2 levels of categories support
+
+## Dashboard
+
+- [ ] Items about to expire
+- [ ] Items to exhaust
+
+## Recipe support
+
+- [ ] Show available Recipe based on the Inventories
+
+## User experience
+
 - [x] Tom Select integration
 - [x] Fontawesome integration
-- [ ] Consume history support
-- [ ] Category
-- [ ] Dashboard - Items about to expire
-- [ ] Dashboard - Items to exhaust
-- [ ] Show Inventories on Product show page
-- [ ] Show Products on Item show page
-- [ ] Show Inventories on Storage show page
 - [ ] Turbo stream support
 - [ ] Pagination
 - [ ] Lazy-loading
+
+## Refactor
+
+- Extract a template for Item, Storage and Unit index page
