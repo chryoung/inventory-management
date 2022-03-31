@@ -53,7 +53,7 @@ class InventoriesController < ApplicationController
     @inventory.destroy
 
     respond_to do |format|
-      format.html { redirect_to inventories_url, notice: "Inventory was successfully destroyed." }
+      format.html { redirect_to inventories_url, status: :see_other, notice: "Inventory was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -77,7 +77,6 @@ class InventoriesController < ApplicationController
         :shelf_life,
         :shelf_life_unit,
         :expire_on,
-        :current_quantity
       )
     end
 end

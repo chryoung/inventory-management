@@ -33,7 +33,7 @@
             </td>
             <td class="data-cell">
               <span class=<%= quantity_style inventory %>>
-                <%= format_number(inventory.current_quantity) %>
+                <%= format_number(inventory.left_quantity) %>
                 /
                 <%= format_number(inventory.quantity) %>
                 <%= inventory.unit.name %>

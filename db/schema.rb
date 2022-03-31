@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_28_140831) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_31_161201) do
   create_table "consume_histories", force: :cascade do |t|
     t.integer "inventory_id", null: false
     t.date "consume_on"
@@ -31,8 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_28_140831) do
     t.decimal "price", precision: 10, scale: 2
     t.integer "storage_id", default: 1, null: false
     t.integer "shelf_life_unit"
-    t.decimal "current_quantity", precision: 32, scale: 6
-    t.bigint "product_id", null: false
+    t.integer "product_id", null: false
     t.index ["product_id"], name: "index_inventories_on_product_id"
     t.index ["storage_id"], name: "index_inventories_on_storage_id"
     t.index ["unit_id"], name: "index_inventories_on_unit_id"

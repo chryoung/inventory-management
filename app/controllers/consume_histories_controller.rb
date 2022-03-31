@@ -1,6 +1,6 @@
 class ConsumeHistoriesController < ApplicationController
-  before_action :set_inventory, only: %i[ index new show create update ]
-  before_action :set_consume_history, only: %i[ edit update destroy ]
+  before_action :set_inventory, only: %i[ index new show create ]
+  before_action :set_consume_history, only: %i[ edit update destroy update ]
 
   def index
     @consume_histories = @inventory.consume_histories
@@ -35,7 +35,7 @@ class ConsumeHistoriesController < ApplicationController
   def update
     respond_to do |format|
       if @consume_history.update(consume_history_params)
-        format.html { redirect_to inventory_url(@inventory), notice: "Consume history was successfully updated." }
+        format.html { redirect_to inventory_url(@consume_history.inventory), notice: "Consume history was successfully updated." }
         format.json { render :show, status: :ok, location: @consume_history }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,11 +45,11 @@ class ConsumeHistoriesController < ApplicationController
   end
 
   def destroy
-    @inventory = @consume_history.inventory
+    inventory = @consume_history.inventory
     @consume_history.destroy
 
     respond_to do |format|
-      format.html { redirect_to inventory_url(@inventory), notice: "Consume history was successfully destroyed." }
+      format.html { redirect_to inventory_url(inventory), status: :see_other, notice: "Consume history was successfully destroyed." }
       format.json { head :no_content }
     end
   end

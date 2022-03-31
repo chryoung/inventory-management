@@ -22,11 +22,6 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :current_quantity %>
-    <%= form.number_field :current_quantity, step: "any", class: "form-input-full", data: { inventory_form_target: "currentQuantity", action: "inventory-form#currentQuantityIsUpdated" } %>
-  </div>
-
-  <div class="my-5">
     <%= form.label :unit_id %>
     <%= form.collection_select :unit_id, Unit.all, :id, :name, { :prompt => true }, { data: { controller: "ts--select" } } %>
   </div>

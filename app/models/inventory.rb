@@ -40,14 +40,6 @@ class Inventory < ApplicationRecord
     return quantity
   end
 
-  def current_quantity_number
-    if current_quantity.to_i.to_d == current_quantity
-      return current_quantity.to_i
-    end
-
-    return current_quantity
-  end
-
   def expire_on
     unless produced_on.nil? or shelf_life.nil?
       if Year?

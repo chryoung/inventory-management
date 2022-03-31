@@ -51,7 +51,7 @@ class UnitsController < ApplicationController
   def destroy
     respond_to do |format|
       if @unit.destroy
-        format.html { redirect_to units_url, notice: "Unit was successfully destroyed." }
+        format.html { redirect_to units_url, status: :see_other, notice: "Unit was successfully destroyed." }
         format.json { head :no_content }
       else
         error_message = @unit.errors.first.full_message

@@ -17,7 +17,7 @@ class StoragesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create storage" do
     assert_difference("Storage.count") do
-      post storages_url, params: { storage: { location: @storage.location } }
+      post storages_url, params: { storage: { location: "Somewhere" } }
     end
 
     assert_redirected_to storage_url(Storage.last)

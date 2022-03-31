@@ -2,20 +2,21 @@ require "test_helper"
 
 class ConsumeHistoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @inventory = inventories(:one)
     @consume_history = consume_histories(:one)
   end
 
   test "should get new" do
-    get new_consume_history_url
+    get new_inventory_consume_history_url(@inventory)
     assert_response :success
   end
 
   test "should create consume_history" do
     assert_difference("ConsumeHistory.count") do
-      post consume_histories_url, params: { consume_history: { consume_on: @consume_history.consume_on, inventory_id: @consume_history.inventory_id, quantity: @consume_history.quantity } }
+      post inventory_consume_histories_url(@inventory) , params: { consume_history: { consume_on: @consume_history.consume_on, quantity: @inventory.left_quantity } }
     end
 
-    assert_redirected_to consume_history_url(ConsumeHistory.last)
+    assert_redirected_to inventory_url(@inventory)
   end
 
   test "should get edit" do
@@ -24,8 +25,9 @@ class ConsumeHistoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update consume_history" do
-    patch consume_history_url(@consume_history), params: { consume_history: { consume_on: @consume_history.consume_on, inventory_id: @consume_history.inventory_id, quantity: @consume_history.quantity } }
-    assert_redirected_to consume_history_url(@consume_history)
+    patch consume_history_url(@consume_history), params: { consume_history: { consume_on: @consume_history.consume_on, quantity: 3 } }
+
+    assert_redirected_to inventory_url(@inventory)
   end
 
   test "should destroy consume_history" do
@@ -33,6 +35,6 @@ class ConsumeHistoriesControllerTest < ActionDispatch::IntegrationTest
       delete consume_history_url(@consume_history)
     end
 
-    assert_redirected_to consume_histories_url
+    assert_redirected_to inventory_url(@inventory)
   end
 end

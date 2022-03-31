@@ -52,7 +52,7 @@ class StoragesController < ApplicationController
     @storage.destroy
 
     respond_to do |format|
-      format.html { redirect_to storages_url, notice: "Storage was successfully destroyed." }
+      format.html { redirect_to storages_url, status: :see_other, notice: "Storage was successfully destroyed." }
       format.json { head :no_content }
     end
   end
