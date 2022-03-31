@@ -6,9 +6,9 @@
   </div>
 
   <div id="units" class="max-w-sm mx-auto">
-    <ul>
+    <ul class="divide-y divide-teal-100">
       <% @units.each do |unit| %>
-        <li id="<%= dom_id unit %>" class="py-2 border-b-2 last:border-b-0 border-teal-100 hover:bg-teal-100 flex justify-between">
+        <li id="<%= dom_id unit %>" class="py-2 hover:bg-teal-100 flex justify-between">
           <%= link_to unit.name, unit_path(unit), class: "text-sky-500 hover:text-sky-700 block" %>
           <%= link_to '×', unit_path(unit), data: { turbo_method: :delete }, class: "text-red-500 hover:text-white hover:bg-red-500 hover:rounded-circle px-2 block" %>
         </li>

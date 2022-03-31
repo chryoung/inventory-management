@@ -43,8 +43,15 @@
     </p>
   </div>
   <div>
-    <%= link_to "Consume product", new_inventory_consume_history_path(inventory), class: "btn-primary block" %>
-    <%= render template: "consume_histories/index" %>
+    <%= link_to new_inventory_consume_history_path(inventory), class: "btn-primary block mb-5" do %>
+      <span>
+        Consume
+        <i class="fa-solid fa-drumstick-bite"></i>
+      </span>
+    <% end %>
+    <div class="mb-5">
+      <%= render template: "consume_histories/index" %>
+    </div>
   </div>
 </div>
 

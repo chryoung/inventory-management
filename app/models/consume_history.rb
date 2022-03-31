@@ -1,3 +1,3 @@
 class ConsumeHistory < ApplicationRecord
-  belongs_to :inventory
+  belongs_to :inventory, touch: true
 end

@@ -6,12 +6,14 @@
   </div>
 
   <div id="storages" class="max-w-sm mx-auto">
-    <ul>
+    <ul class="divide-y divide-teal-100">
       <% @storages.each do |storage| %>
-        <li id="<%= dom_id storage %>" class="py-2 border-b-2 last:border-b-0 border-teal-100 hover:bg-teal-100 flex justify-between">
-          <%= link_to storage.location, storage_path(storage), class: "text-sky-500 hover:text-sky-700 block" %>
-          <%= link_to '×', storage_path(storage), data: { turbo_method: :delete }, class: "text-red-500 hover:text-white hover:bg-red-500 hover:rounded-circle px-2 block" %>
-        </li>
+        <% cache storage do %>
+          <li id="<%= dom_id storage %>" class="py-2 hover:bg-teal-100 flex justify-between">
+            <%= link_to storage.location, storage_path(storage), class: "text-sky-500 hover:text-sky-700 block" %>
+            <%= link_to '×', storage_path(storage), data: { turbo_method: :delete }, class: "text-red-500 hover:text-white hover:bg-red-500 hover:rounded-circle px-2 block" %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

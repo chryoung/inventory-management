@@ -2,7 +2,7 @@ require 'bigdecimal'
 require 'bigdecimal/util'
 
 class Inventory < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, touch: true
   belongs_to :unit
   belongs_to :storage
   has_many :consume_histories, dependent: :destroy
@@ -64,6 +64,10 @@ class Inventory < ApplicationRecord
 
   def total_consumption
     consume_histories.sum(:quantity)
+  end
+
+  def left_quantity
+    quantity - total_consumption
   end
 
 end

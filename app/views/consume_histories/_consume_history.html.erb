@@ -1,17 +1,19 @@
-<tr id="<<%= dom_id consume_history %>">
-  <td><%= consume_history.consume_on %></td>
+<% cache consume_history do %>
+  <tr id="<<%= dom_id consume_history %>" class="bg-white hover:bg-teal-100 even:bg-teal-300 even:hover:bg-teal-500">
+    <td><%= consume_history.consume_on %></td>
 
-  <td><%= consume_history.quantity %></td>
+    <td><%= consume_history.quantity %></td>
 
-  <td>
-    <%= link_to edit_consume_history_path(consume_history) do %>
-      <i class="fa-solid fa-pen"></i>
-    <% end %>
-  </td>
+    <td>
+      <%= link_to edit_consume_history_path(consume_history), class: "hover:text-sky-500" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
+    </td>
 
-  <td>
-    <%= link_to consume_history_path(consume_history), data: { turbo_method: :delete } do %>
-      <i class="fa-solid fa-xmark"></i>
-    <% end %>
-  </td>
-</tr>
+    <td>
+      <%= link_to consume_history_path(consume_history), class: "hover:text-red-500", data: { turbo_method: :delete } do %>
+        <i class="fa-solid fa-xmark"></i>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

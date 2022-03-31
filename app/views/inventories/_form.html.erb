@@ -18,12 +18,12 @@
 
   <div class="my-5">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, step: "any", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { inventory_form_target: "quantity", action: "inventory-form#quantityIsUpdated" } %>
+    <%= form.number_field :quantity, step: "any", class: "form-input-full", data: { inventory_form_target: "quantity", action: "inventory-form#quantityIsUpdated" } %>
   </div>
 
   <div class="my-5">
     <%= form.label :current_quantity %>
-    <%= form.number_field :current_quantity, step: "any", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", data: { inventory_form_target: "currentQuantity", action: "inventory-form#currentQuantityIsUpdated" } %>
+    <%= form.number_field :current_quantity, step: "any", class: "form-input-full", data: { inventory_form_target: "currentQuantity", action: "inventory-form#currentQuantityIsUpdated" } %>
   </div>
 
   <div class="my-5">
@@ -33,32 +33,32 @@
 
   <div class="my-5">
     <%= form.label :total_price %>
-    <%= form.number_field :total_price, step: "any", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.number_field :total_price, step: "any", class: "form-input-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :storage_id %>
-    <%= form.collection_select :storage_id, Storage.all, :id, :location, { prompt: true } %>
+    <%= form.collection_select :storage_id, Storage.all, :id, :location, { prompt: true }, class: "form-input-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :in_stock_on %>
-    <%= form.date_field :in_stock_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :in_stock_on, class: "form-input-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :produced_on %>
-    <%= form.date_field :produced_on, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :produced_on, class: "form-input-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :shelf_life %>
       <div class="flex">
-        <%= form.number_field :shelf_life, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 mr-2 basis-1/2 sm:basis-4/5" %>
+        <%= form.number_field :shelf_life, class: "form-input mr-2 basis-1/2 sm:basis-4/5" %>
         <%= form.select :shelf_life_unit,
                 Inventory.shelf_life_units.keys,
                 {},
-                { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 basis-1/2 sm:basis-1/5" } %>
+                { class: "form-input basis-1/2 sm:basis-1/5" } %>
       </div>
   </div>
 

@@ -1,5 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<div class="mx-auto w-full md:w-2/3 flex">
+  <div class="w-full mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
@@ -7,7 +7,7 @@
     <%= render @inventory %>
 
     <div class="flex flex-col sm:flex-row">
-      <%= link_to 'Back to inventories', inventories_path, class: "btn-primary block mb-2 sm:mb-0 sm:ml-2" %>
+      <%= link_to 'Back to inventories', inventories_path, class: "btn-primary block mb-2 sm:mb-0" %>
 
       <%= link_to 'Edit this inventory', edit_inventory_path(@inventory), class: "btn-secondary block mb-2 sm:mb-0 sm:ml-2" %>
 

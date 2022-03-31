@@ -18,7 +18,12 @@
 
   <div class="my-5">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <div class="flex">
+      <%= form.number_field :quantity, step: "any", class: "form-input w-4/5" %>
+      <div class="rounded-md bg-teal-500 px-3 py-2 mt-2 ml-2 w-1/5 text-white text-center">
+        <%= consume_history.inventory.unit.name %>
+      </div>
+    </div>
   </div>
 
   <div class="inline">
