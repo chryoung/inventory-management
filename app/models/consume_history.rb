@@ -1,13 +1,11 @@
 class OverConsumeValidator < ActiveModel::Validator
   def validate(record)
     if record.quantity + record.inventory.total_consumption > record.inventory.quantity
-      error_message = "The consuming quantity exceeds the current quantity."
-      record.errors.add :base, I18n.t(error_message, default: error_message)
+      record.errors.add :base, I18n.t(:over_consume_error, scope: [:models, :consume_history, :validator])
     end
 
     if record.inventory.produced_on.present? and record.consume_on < record.inventory.produced_on
-      error_message = "The product cannot be consumed before it was produced."
-      record.errors.add :base, I18n.t(error_message, default: error_message)
+      record.errors.add :base, I18n.t(:consume_before_production_error, scope: [:models, :consume_history, :validator])
     end
   end
 end
