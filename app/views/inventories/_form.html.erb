@@ -38,7 +38,7 @@
 
   <div class="my-5">
     <%= form.label :storage_id %>
-    <%= form.collection_select :storage_id, Storage.all, :id, :location, { prompt: true }, { data: { controller: "ts--select" } } %>
+    <%= form.collection_select :storage_id, Storage.all, :id, :location, { prompt: true } %>
   </div>
 
   <div class="my-5">

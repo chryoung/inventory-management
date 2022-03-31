@@ -3,11 +3,13 @@
 ## Items
 
 - [ ] Create a default Product for a new Item
+- [ ] Create a Product from an Item
 
 ## Products
 
 - [ ] Show Products on Item show page
 - [ ] Add default shelf life for Product
+- [ ] Create an Inventory from a Product
 
 ## Inventories
 
