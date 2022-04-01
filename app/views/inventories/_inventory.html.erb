@@ -9,7 +9,9 @@
 
     <p class="my-5">
       <strong class="block font-medium mb-1">Quantity:</strong>
-      <span class=<%= quantity_style inventory %>><%= format_number(inventory.left_quantity) %> / <%= format_number(inventory.quantity) %> <%= inventory.unit.name %></span>
+      <span class=<%= quantity_style inventory %>>
+        <%= render partial: "quantity", locals: { inventory: inventory } %>
+      </span>
     </p>
 
     <p class="my-5">
@@ -34,9 +36,7 @@
 
     <p class="my-5">
       <strong class="block font-medium mb-1">Shelf life:</strong>
-      <% if inventory.shelf_life.present? %>
-        <%= inventory.shelf_life %> <%= inventory.shelf_life_unit %>
-      <% end %>
+      <%= render partial: "shelf_life", locals: { inventory: inventory} %>
     </p>
 
     <p class="my-5">

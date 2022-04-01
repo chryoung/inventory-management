@@ -47,7 +47,7 @@ class InventoriesController < ApplicationController
   # PATCH/PUT /inventories/1 or /inventories/1.json
   def update
     respond_to do |format|
-      if @inventory.update(inventory_params)
+      if @inventory.update(update_inventory_params)
         format.html { redirect_to inventory_url(@inventory), notice: "Inventory was successfully updated." }
         format.json { render :show, status: :ok, location: @inventory }
       else
@@ -75,10 +75,25 @@ class InventoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def inventory_params
-      permitted_params = params.require(:inventory).permit(
+      params.require(:inventory).permit(
         :product_id,
         :quantity,
         :unit_id,
+        :total_price,
+        :storage_id,
+        :in_stock_on,
+        :produced_on,
+        :shelf_life,
+        :shelf_life_unit,
+        :expire_on,
+      )
+    end
+
+
+    def update_inventory_params
+      params.require(:inventory).permit(
+        :product_id,
+        :quantity,
         :total_price,
         :storage_id,
         :in_stock_on,

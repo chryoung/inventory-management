@@ -4,8 +4,8 @@
   <% end %>
 
   <div class="flex justify-between">
-    <div data-controller="inventory--index-type" class="group">
-      <button data-inventory-index-type-target="typeButton" class="btn-primary w-40"><%= index_type %></button>
+    <div class="group">
+      <button data-inventory-index-type-target="typeButton" class="btn-primary cursor-default w-40"><%= index_type %></button>
       <ul class="hidden absolute drop-shadow-md z-10 group-hover:block divide-y divide-teal-300 justify-center text-slate-500 w-40 pt-1">
         <li><%= link_to t("In Stock"), inventories_url, class: "block bg-teal-100/90 hover:bg-teal-300/90 rounded-t-md text-center p-2" %></li>
         <li><%= link_to t("Out of Stock"), inventories_url(exhausted: "1"), class: "block bg-teal-100 hover:bg-teal-300 text-center p-2" %></li>
@@ -21,7 +21,6 @@
         <th class="data-header-cell">Item</th>
         <th class="data-header-cell">Quantity</th>
         <th class="data-header-cell-sm">Storage</th>
-        <th class="data-header-cell-sm">Price per unit</th>
         <th class="data-header-cell-sm">In stock on</th>
         <th class="data-header-cell-sm">Produced on</th>
         <th class="data-header-cell-sm">Shelf life</th>
@@ -41,21 +40,14 @@
             </td>
             <td class="data-cell">
               <span class=<%= quantity_style inventory %>>
-                <%= format_number(inventory.left_quantity) %>
-                /
-                <%= format_number(inventory.quantity) %>
-                <%= inventory.unit.name %>
+                <%= render partial: "quantity", locals: { inventory: inventory } %>
               </span>
             </td>
             <td class="data-cell-sm"><%= inventory.storage.location %></td>
-            <td class="data-cell-sm"><%= inventory.price %></td>
             <td class="data-cell-sm"><%= inventory.in_stock_on %></td>
             <td class="data-cell-sm"><%= inventory.produced_on %></td>
             <td class="data-cell-sm">
-              <% if inventory.shelf_life.present? %>
-                <%= inventory.shelf_life %>
-                <%= inventory.shelf_life_unit %>
-              <% end %>
+              <%= render partial: "shelf_life", locals: { inventory: inventory } %>
             </td>
             <td class="data-cell-sm"><%= inventory.expire_on %></td>
             <td class="data-cell">

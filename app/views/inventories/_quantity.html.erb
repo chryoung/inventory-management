@@ -1,0 +1,6 @@
+<% if inventory.left_quantity != inventory.quantity %>
+  <%= format_number(inventory.left_quantity) %>
+  /
+<% end %>
+<%= format_number(inventory.quantity) %>
+<%= inventory.unit.name %>
