@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="inventory-form"
+// Connects to data-controller="inventory--form"
 export default class extends Controller {
   static targets = ["quantity", "currentQuantity"]
 
