@@ -1,6 +1,3 @@
-require 'bigdecimal'
-require 'bigdecimal/util'
-
 class Inventory < ApplicationRecord
   belongs_to :product, touch: true
   belongs_to :unit
@@ -14,6 +11,20 @@ class Inventory < ApplicationRecord
   }
 
   validates :shelf_life_unit, inclusion: shelf_life_units.keys
+
+  def self.all_in_stock
+    Inventory
+      .left_joins(:consume_histories)
+      .group("inventories.id")
+      .having("COALESCE(SUM(consume_histories.quantity), 0) < inventories.quantity")
+  end
+
+  def self.all_exhausted
+    Inventory
+      .left_joins(:consume_histories)
+      .group("inventories.id")
+      .having("COALESCE(SUM(consume_histories.quantity), 0) >= inventories.quantity")
+  end
 
   def total_price
     unless price.nil? or quantity.nil?
@@ -61,5 +72,4 @@ class Inventory < ApplicationRecord
   def left_quantity
     quantity - total_consumption
   end
-
 end

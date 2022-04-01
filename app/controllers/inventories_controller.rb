@@ -3,7 +3,16 @@ class InventoriesController < ApplicationController
 
   # GET /inventories or /inventories.json
   def index
-    @inventories = Inventory.all
+    is_exhausted = params[:exhausted]
+    is_all = params[:all]
+
+    if is_exhausted == "1"
+      @inventories = Inventory.all_exhausted
+    elsif is_all == "1"
+      @inventories = Inventory.all
+    else
+      @inventories = Inventory.all_in_stock
+    end
   end
 
   # GET /inventories/1 or /inventories/1.json
