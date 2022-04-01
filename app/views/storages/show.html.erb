@@ -4,7 +4,9 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @storage %>
+    <% cache @storage do %>
+      <%= render @storage %>
+    <% end %>
 
     <%= link_to 'Edit this storage', edit_storage_path(@storage), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">

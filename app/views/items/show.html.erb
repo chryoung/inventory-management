@@ -5,7 +5,9 @@
     <% end %>
 
     <ul>
-      <%= render @item %>
+      <% cache @item do %>
+        <%= render @item %>
+      <% end %>
     </ul>
 
     <%= link_to 'Edit this item', edit_item_path(@item), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
