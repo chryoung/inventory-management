@@ -4,6 +4,9 @@ class Inventory < ApplicationRecord
   belongs_to :storage
   has_many :consume_histories, dependent: :destroy
 
+  validates :in_stock_on, comparison: { greater_than_or_equal_to: :produced_on }
+  validates :quantity, presence: true
+
   enum shelf_life_unit: {
     "Year" => 1,
     "Month" => 2,

@@ -22,7 +22,7 @@ class InventoriesController < ApplicationController
 
   # GET /inventories/new
   def new
-    @inventory = Inventory.new in_stock_on: Date.today, produced_on: Date.today
+    @inventory = Inventory.new quantity: 1, in_stock_on: Date.today, produced_on: Date.today
   end
 
   # GET /inventories/1/edit

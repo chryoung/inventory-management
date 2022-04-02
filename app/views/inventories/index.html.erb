@@ -20,13 +20,13 @@
       <tr>
         <th class="data-header-cell">Item</th>
         <th class="data-header-cell">Quantity</th>
-        <th class="data-header-cell-sm">Storage</th>
-        <th class="data-header-cell-sm">In stock on</th>
-        <th class="data-header-cell-sm">Produced on</th>
-        <th class="data-header-cell-sm">Shelf life</th>
-        <th class="data-header-cell-sm">Expire on</th>
+        <th class="data-header-cell hidden md:table-cell">Storage</th>
+        <th class="data-header-cell hidden lg:table-cell">In stock on</th>
+        <th class="data-header-cell hidden lg:table-cell">Produced on</th>
+        <th class="data-header-cell hidden lg:table-cell">Shelf life</th>
+        <th class="data-header-cell hidden md:table-cell">Expire on</th>
         <th class="data-header-cell"></th>
-        <th class="data-header-cell-sm"></th>
+        <th class="data-header-cell"></th>
       </tr>
     </thead>
     <tbody>
@@ -43,19 +43,19 @@
                 <%= render partial: "quantity", locals: { inventory: inventory } %>
               </span>
             </td>
-            <td class="data-cell-sm"><%= inventory.storage.location %></td>
-            <td class="data-cell-sm"><%= inventory.in_stock_on %></td>
-            <td class="data-cell-sm"><%= inventory.produced_on %></td>
-            <td class="data-cell-sm">
+            <td class="data-cell hidden md:table-cell"><%= inventory.storage.location %></td>
+            <td class="data-cell hidden lg:table-cell"><%= inventory.in_stock_on %></td>
+            <td class="data-cell hidden lg:table-cell"><%= inventory.produced_on %></td>
+            <td class="data-cell hidden lg:table-cell">
               <%= render partial: "shelf_life", locals: { inventory: inventory } %>
             </td>
-            <td class="data-cell-sm"><%= inventory.expire_on %></td>
+            <td class="data-cell hidden md:table-cell"><%= inventory.expire_on %></td>
             <td class="data-cell">
               <%= link_to new_inventory_consume_history_path(inventory), class: "hover:text-sky-500" do %>
                 <i class="fa-solid fa-drumstick-bite"></i>
               <% end %>
             </td>
-            <td class="data-cell-sm">
+            <td class="data-cell">
               <%= link_to edit_inventory_path(inventory), class: "hover:text-sky-500" do %>
                 <i class="fa-solid fa-pen"></i>
               <% end %>
