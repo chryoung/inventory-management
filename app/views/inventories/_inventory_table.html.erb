@@ -1,0 +1,54 @@
+<table class="data-table">
+  <thead class="data-header">
+  <tr>
+    <th class="data-header-cell"><%= t("Product") unless local_assigns[:hide_product].present? %></th>
+    <th class="data-header-cell">Quantity</th>
+    <th class="data-header-cell hidden md:table-cell">Storage</th>
+    <th class="data-header-cell hidden lg:table-cell">In stock on</th>
+    <th class="data-header-cell hidden lg:table-cell">Produced on</th>
+    <th class="data-header-cell hidden lg:table-cell">Shelf life</th>
+    <th class="data-header-cell hidden md:table-cell">Expire on</th>
+    <th class="data-header-cell"></th>
+    <th class="data-header-cell"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% inventories.each do |inventory| %>
+    <% cache inventory do %>
+      <tr class="hover:bg-teal-300">
+        <td class="data-cell">
+          <%= link_to inventory_path(inventory), class: "link-primary" do %>
+            <% unless local_assigns[:hide_product].present? %>
+              <%= render partial: "products/variant", locals: { product: inventory.product } %>
+            <% else %>
+              <i class="fa-solid fa-jar"></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="data-cell">
+          <span class=<%= quantity_style inventory %>>
+            <%= render partial: "inventories/quantity", locals: { inventory: inventory } %>
+          </span>
+        </td>
+        <td class="data-cell hidden md:table-cell"><%= inventory.storage.location %></td>
+        <td class="data-cell hidden lg:table-cell"><%= inventory.in_stock_on %></td>
+        <td class="data-cell hidden lg:table-cell"><%= inventory.produced_on %></td>
+        <td class="data-cell hidden lg:table-cell">
+          <%= render partial: "inventories/shelf_life", locals: { inventory: inventory } %>
+        </td>
+        <td class="data-cell hidden md:table-cell"><%= inventory.expire_on %></td>
+        <td class="data-cell">
+          <%= link_to new_inventory_consume_history_path(inventory), class: "hover:text-sky-500" do %>
+            <i class="fa-solid fa-drumstick-bite"></i>
+          <% end %>
+        </td>
+        <td class="data-cell">
+          <%= link_to edit_inventory_path(inventory), class: "hover:text-sky-500" do %>
+            <i class="fa-solid fa-pen"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

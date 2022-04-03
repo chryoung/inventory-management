@@ -1,4 +1,8 @@
 <% if product.variant.present? %>
   <span class="bg-teal-100 rounded px-2 py-1 mr-1"><%= product.variant %></span>
 <% end %>
-<%= product.item.name %>
+<% if local_assigns[:item_link].present? %>
+  <%= link_to product.item.name, item_path(product.item), class: "link-primary" %>
+<% else %>
+  <%= product.item.name %>
+<% end %>

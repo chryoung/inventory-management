@@ -1,0 +1,20 @@
+<% inventories.each do |inventory| %>
+  <% cache inventory do %>
+    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-between" do %>
+      <span class="block basis-3/5 sm:basis-2/5">
+        <i class="fa-solid fa-jar"></i>
+        <%= render partial: "inventories/quantity", locals: { inventory: inventory } %>
+      </span>
+
+      <span class="block basis-2/5 sm:basis-1/5">
+        <i class="fa-solid fa-location-pin"></i>
+        <%= inventory.storage.location %>
+      </span>
+
+      <span class="hidden sm:block basis-2/5">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <%= inventory.expire_on %>
+      </span>
+    <% end %>
+  <% end %>
+<% end %>

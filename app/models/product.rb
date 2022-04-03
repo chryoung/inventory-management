@@ -23,4 +23,8 @@ class Product < ApplicationRecord
 
     group
   end
+
+  def in_stock_inventories
+    Inventory.all_in_stock.where(product_id: id)
+  end
 end

@@ -4,24 +4,25 @@
 
 - [ ] Create a default Product for a new Item
 - [ ] Create a Product from an Item
+- [x] Show Products and Inventories for an Item
 
 ## Products
 
-- [ ] Show Products on Item show page
+- [x] Show Products on Item show page
 - [ ] Add default shelf life for Product
 - [ ] Create an Inventory from a Product
 
 ## Inventories
 
-- [ ] Hide empty Inventories by default
-- [ ] Show Inventories on Product show page
+- [x] Hide empty Inventories by default
+- [x] Show Inventories on Product show page
 - [ ] Show Inventories on Storage show page
-- [ ] Create a Inventory with default shelf life
+- [x] Create a Inventory with default shelf life
 
 ## Consume History
 
-- [ ] Show consume history on Inventory show page
-- [ ] Add consume history on Inventory show page
+- [x] Show consume history on Inventory show page
+- [x] Add consume history on Inventory show page
 
 ## Category support
 
@@ -46,4 +47,3 @@
 
 ## Refactor
 
-- Extract a template for Item, Storage and Unit index page

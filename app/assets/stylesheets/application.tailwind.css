@@ -42,7 +42,7 @@
   }
 
   .data-table {
-    @apply table-auto w-full mt-10 border-2 border-separate border-spacing-0 border-teal-300 rounded-lg;
+    @apply table-auto w-full border-2 border-separate border-spacing-0 border-teal-300 rounded-lg;
   }
 
   .data-header {

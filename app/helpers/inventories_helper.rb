@@ -1,6 +1,6 @@
 module InventoriesHelper
   def quantity_style(inventory)
-    if inventory.left_quantity <= 0
+    if inventory.total_consumption >= inventory.quantity
       "line-through"
     else
       ""

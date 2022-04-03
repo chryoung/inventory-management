@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @items = Product.all.group_by { |prod| prod.item }.keys
+    @items = Item.includes(:products).where.not(products: nil)
   end
 
   # GET /products/1 or /products/1.json

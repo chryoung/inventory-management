@@ -9,9 +9,9 @@ class InventoriesController < ApplicationController
     if is_exhausted == "1"
       @inventories = Inventory.all_exhausted
     elsif is_all == "1"
-      @inventories = Inventory.all
+      @inventories = Inventory.index_all
     else
-      @inventories = Inventory.all_in_stock
+      @inventories = Inventory.all_in_stock_order_by_item_id
     end
   end
 

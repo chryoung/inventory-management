@@ -15,30 +15,44 @@ class Inventory < ApplicationRecord
 
   validates :shelf_life_unit, inclusion: shelf_life_units.keys
 
+  def self.index_all
+    Inventory
+      .select("inventories.*, COALESCE(SUM(consume_histories.quantity), 0) AS total_consumption")
+      .includes(:unit, :storage, product: [:item])
+      .left_joins(:consume_histories)
+      .group("inventories.id, products.id, items.id, units.id, storages.id")
+      .references(:unit, :storage, :product, :item)
+  end
+
   def self.all_in_stock
     Inventory
-      .left_joins(:consume_histories)
-      .group("inventories.id")
-      .having("COALESCE(SUM(consume_histories.quantity), 0) < inventories.quantity")
+      .index_all
+      .having("COALESCE(SUM(consume_histories.quantity), ?) < inventories.quantity", 0)
+  end
+
+  def self.all_in_stock_order_by_item_id
+    Inventory
+      .index_all
+      .having("COALESCE(SUM(consume_histories.quantity), ?) < inventories.quantity", 0)
+      .order("products.item_id")
   end
 
   def self.all_exhausted
     Inventory
-      .left_joins(:consume_histories)
-      .group("inventories.id")
+      .index_all
       .having("COALESCE(SUM(consume_histories.quantity), 0) >= inventories.quantity")
   end
 
   def total_price
-    unless price.nil? or quantity.nil?
-      (price * quantity).round(2)
+    if price.present? and quantity.present?
+      (price * quantity).round(2, ROUND_UP)
     else
       0
     end
   end
 
   def total_price=(value)
-    unless quantity.nil? or quantity == 0
+    if quantity.present?
       self.price = value.to_d / quantity
     else
       self.price = value.to_d
@@ -51,7 +65,7 @@ class Inventory < ApplicationRecord
       return quantity.to_i
     end
 
-    return quantity
+    quantity
   end
 
   def expire_on
@@ -65,14 +79,18 @@ class Inventory < ApplicationRecord
       end
     end
 
-    return nil
+    nil
   end
 
   def total_consumption
-    consume_histories.sum(:quantity)
+    self.attributes["total_consumption"] || consume_histories.sum(:quantity)
   end
 
   def left_quantity
     quantity - total_consumption
+  end
+
+  def exhausted?
+    left_quantity <= 0
   end
 end

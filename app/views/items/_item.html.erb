@@ -1,12 +1,19 @@
 <div id="<%= dom_id item %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+    <strong class="block font-medium mb-1"><%= t(:name) %>:</strong>
     <%= item.name %>
   </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this item", item, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this item', edit_item_path(item), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <div class="divide-y divide-teal-100 my-5">
+    <% item.products.each do |product| %>
+      <% cache product do %>
+        <div id="<%= dom_id product %>">
+          <h2 class="text-md"><%= link_to product.name, product_path(product), class: "link-primary inline-block py-2" %></h2>
+          <div class="ml-2">
+            <%= render partial: "inventories/inventory_summary", locals: { inventories: product.in_stock_inventories } %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
