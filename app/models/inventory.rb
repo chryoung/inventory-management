@@ -30,17 +30,10 @@ class Inventory < ApplicationRecord
       .having("COALESCE(SUM(consume_histories.quantity), ?) < inventories.quantity", 0)
   end
 
-  def self.all_in_stock_order_by_item_id
-    Inventory
-      .index_all
-      .having("COALESCE(SUM(consume_histories.quantity), ?) < inventories.quantity", 0)
-      .order("products.item_id")
-  end
-
   def self.all_exhausted
     Inventory
       .index_all
-      .having("COALESCE(SUM(consume_histories.quantity), 0) >= inventories.quantity")
+      .having("COALESCE(SUM(consume_histories.quantity), ?) >= inventories.quantity", 0)
   end
 
   def total_price

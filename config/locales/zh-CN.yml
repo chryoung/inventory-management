@@ -179,3 +179,5 @@ zh-CN:
       long: "%Y年%m月%d日 %H:%M"
       short: "%m月%d日 %H:%M"
     pm: 下午
+  product: "产品"
+  name: "名字"

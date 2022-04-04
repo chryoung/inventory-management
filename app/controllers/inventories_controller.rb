@@ -7,11 +7,11 @@ class InventoriesController < ApplicationController
     is_all = params[:all]
 
     if is_exhausted == "1"
-      @inventories = Inventory.all_exhausted
+      @inventories = Inventory.all_exhausted.order("products.item_id, products.id, inventories.in_stock_on")
     elsif is_all == "1"
-      @inventories = Inventory.index_all
+      @inventories = Inventory.index_all.order("products.item_id, products.id, inventories.in_stock_on")
     else
-      @inventories = Inventory.all_in_stock_order_by_item_id
+      @inventories = Inventory.all_in_stock.order("products.item_id, products.id, inventories.in_stock_on")
     end
   end
 

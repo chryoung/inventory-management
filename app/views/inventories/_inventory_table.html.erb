@@ -1,7 +1,7 @@
 <table class="data-table">
   <thead class="data-header">
   <tr>
-    <th class="data-header-cell"><%= t("Product") unless local_assigns[:hide_product].present? %></th>
+    <th class="data-header-cell"><%= t(:product) %></th>
     <th class="data-header-cell">Quantity</th>
     <th class="data-header-cell hidden md:table-cell">Storage</th>
     <th class="data-header-cell hidden lg:table-cell">In stock on</th>
@@ -18,11 +18,8 @@
       <tr class="hover:bg-teal-300">
         <td class="data-cell">
           <%= link_to inventory_path(inventory), class: "link-primary" do %>
-            <% unless local_assigns[:hide_product].present? %>
-              <%= render partial: "products/variant", locals: { product: inventory.product } %>
-            <% else %>
-              <i class="fa-solid fa-jar"></i>
-            <% end %>
+            <i class="fa-solid fa-jar"></i>
+            <%= render partial: "products/variant", locals: { product: inventory.product } %>
           <% end %>
         </td>
         <td class="data-cell">

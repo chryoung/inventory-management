@@ -11,10 +11,12 @@
         <%= inventory.storage.location %>
       </span>
 
-      <span class="hidden sm:block basis-2/5">
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        <%= inventory.expire_on %>
-      </span>
+      <% if inventory.expire_on.present? %>
+        <span class="hidden sm:block basis-2/5">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <%= inventory.expire_on %>
+        </span>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -6,7 +6,7 @@
 
   <div class="mb-5">
     <% if product.inventories.present? %>
-      <%= render partial: "inventories/inventory_table", locals: { inventories: product.inventories, hide_product: true } %>
+      <%= render partial: "inventories/inventory_summary", locals: { inventories: product.inventories } %>
     <% end %>
   </div>
 
