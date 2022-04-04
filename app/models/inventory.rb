@@ -45,7 +45,7 @@ class Inventory < ApplicationRecord
 
   def total_price
     if price.present? and quantity.present?
-      (price * quantity).round(2, ROUND_UP)
+      (price * quantity).round(2, BigDecimal::ROUND_UP)
     else
       0
     end
