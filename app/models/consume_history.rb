@@ -8,15 +8,16 @@ class ConsumeHistory < ApplicationRecord
   private
     def ensure_not_consume_before_production
       if inventory.produced_on.present? and consume_on < inventory.produced_on
-        errors.add :base, I18n.t("models.consume_history.validator.consume_before_production_error")
+        errors.add :quantity, I18n.t("models.consume_history.validator.consume_before_production_error")
       end
     end
 
     def ensure_not_overconsume
       was = quantity_was || 0
-      diff = quantity - was
+      now = quantity || 0
+      diff = now - was
       if diff > 0 and inventory.total_consumption + diff > inventory.quantity
-        errors.add :base, I18n.t("models.consume_history.validator.over_consume_error")
+        errors.add :quantity, I18n.t("models.consume_history.validator.over_consume_error")
       end
     end
 end
