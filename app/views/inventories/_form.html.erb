@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :item_id %>
+    <%= form.label t(:product) %>
     <%= form.select :product_id, grouped_options_for_select(Product.group_for_select, inventory.product_id), { :prompt => true }, { data: { controller: "ts--select" } } %>
   </div>
 
   <div class="my-5">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, step: "any", class: "form-input-full", data: { inventory_form_target: "quantity", action: "inventory--form#quantityIsUpdated" } %>
+    <%= form.number_field :quantity, step: "any", class: "form-input w-full", data: { inventory_form_target: "quantity", action: "inventory--form#quantityIsUpdated" } %>
   </div>
 
   <div class="my-5">
@@ -28,7 +28,7 @@
 
   <div class="my-5">
     <%= form.label :total_price %>
-    <%= form.number_field :total_price, step: "any", class: "form-input-full" %>
+    <%= form.number_field :total_price, step: "any", class: "form-input w-full" %>
   </div>
 
   <div class="my-5">
@@ -38,12 +38,12 @@
 
   <div class="my-5">
     <%= form.label :in_stock_on %>
-    <%= form.date_field :in_stock_on, class: "form-input-full" %>
+    <%= form.date_field :in_stock_on, class: "form-input w-full" %>
   </div>
 
   <div class="my-5">
     <%= form.label :produced_on %>
-    <%= form.date_field :produced_on, class: "form-input-full" %>
+    <%= form.date_field :produced_on, class: "form-input w-full" %>
   </div>
 
   <div class="my-5">

@@ -5,7 +5,8 @@ class Inventory < ApplicationRecord
   has_many :consume_histories, dependent: :destroy
 
   validates :in_stock_on, comparison: { greater_than_or_equal_to: :produced_on }
-  validates :quantity, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   enum shelf_life_unit: {
     "Year" => 1,
@@ -51,14 +52,6 @@ class Inventory < ApplicationRecord
       self.price = value.to_d
       self.quantity = 1
     end
-  end
-
-  def quantity_number
-    if quantity.to_i.to_d == quantity
-      return quantity.to_i
-    end
-
-    quantity
   end
 
   def expire_on

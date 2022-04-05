@@ -3,7 +3,9 @@
     <%= link_to inventory_path(inventory), class: "link-primary block flex justify-between" do %>
       <span class="block basis-3/5 sm:basis-2/5">
         <i class="fa-solid fa-jar"></i>
-        <%= render partial: "inventories/quantity", locals: { inventory: inventory } %>
+        <%= format_number(inventory.left_quantity) %>
+        /
+        <%= format_number(inventory.quantity) %>
       </span>
 
       <span class="block basis-2/5 sm:basis-1/5">

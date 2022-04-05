@@ -13,7 +13,7 @@ class Product < ApplicationRecord
 
   def self.group_for_select
     group = {}
-    Item.all.each do |item|
+    Item.includes(:products).all.each do |item|
       unless item.products.empty?
         group[item.name] = item.products.map do |prod|
           [prod.name, prod.id]
