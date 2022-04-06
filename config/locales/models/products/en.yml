@@ -1,0 +1,4 @@
+en:
+  products:
+    validates_error:
+      variant_has_been_defined: "A same variant has been defined for this item."

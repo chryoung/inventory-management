@@ -9,11 +9,11 @@ module InventoriesHelper
 
   def index_type
     if params[:exhausted] == "1"
-      t("Out of Stock")
+      t("inventories.index_type.out_of_stock")
     elsif params[:all] == "1"
-      t("All")
+      t("inventories.index_type.all")
     else
-      t("In Stock")
+      t("inventories.index_type.in_stock")
     end
   end
 end

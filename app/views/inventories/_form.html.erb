@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label t(:product) %>
+    <%= form.label t("inventories.inventory_attribute.product") %>
     <%= form.select :product_id, grouped_options_for_select(Product.group_for_select, inventory.product_id), { :prompt => true }, { data: { controller: "ts--select" } } %>
   </div>
 
@@ -57,7 +57,7 @@
       </div>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "btn-primary" %>
+  <div class="block w-full sm:w-fit">
+    <%= form.submit class: "btn-primary w-full" %>
   </div>
 <% end %>

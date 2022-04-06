@@ -1,0 +1,5 @@
+en:
+  consume_histories:
+    validates_error:
+      over_consume_error: "The consuming quantity exceeds the current quantity."
+      consume_before_production_error: "The product cannot be consumed before it was produced."

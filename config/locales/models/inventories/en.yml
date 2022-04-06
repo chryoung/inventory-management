@@ -1,0 +1,10 @@
+en:
+  inventories:
+    inventory_attribute:
+      product: "Product"
+      quantity: "Quantity"
+      storage: "Storage"
+      produced_on: "Produced on"
+      shelf_life: "Shelf life"
+      expire_on: "Expire on"
+

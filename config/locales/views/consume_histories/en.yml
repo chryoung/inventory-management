@@ -1,0 +1,6 @@
+en:
+  consume_histories:
+    index:
+      consumed_on: "Consumed on"
+      quantity: "Quantity"
+      no_consumption: "No consumption"

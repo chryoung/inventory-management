@@ -3,7 +3,7 @@ class ConsumeHistoriesController < ApplicationController
   before_action :set_consume_history, only: %i[ edit update destroy update ]
 
   def index
-    @consume_histories = @inventory.consume_histories
+    @consume_histories = @inventory.consume_histories.order(:consume_on)
   end
 
   def new

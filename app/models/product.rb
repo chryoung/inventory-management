@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :item, touch: true
   has_many :inventories
-  validates :variant, uniqueness: { scope: :item_id, message: I18n.t("A same variant has been defined for this item.") }
+  validates :variant, uniqueness: { scope: :item_id, message: I18n.t("products.validates_error.variant_has_been_defined") }
 
   def name
     if variant.present?

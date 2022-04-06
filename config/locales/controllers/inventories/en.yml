@@ -1,0 +1,6 @@
+en:
+  inventories:
+    index_type:
+      out_of_stock: "Out of Stock"
+      all: "All"
+      in_stock: "In Stock"

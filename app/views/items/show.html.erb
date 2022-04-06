@@ -9,9 +9,9 @@
     <% end %>
 
     <div class="flex flex-col sm:flex-row">
-      <%= link_to 'Edit this item', edit_item_path(@item), class: "btn-primary block w-full sm:w-fit" %>
-      <%= button_to 'Destroy this item', item_path(@item), method: :delete, class: "btn-secondary text-left block w-full sm:mx-2 my-2 sm:my-0 sm:w-fit" %>
-      <%= link_to 'Back to items', items_path, class: "btn-secondary block w-full sm:w-fit" %>
+      <%= link_to 'Edit this item', edit_item_path(@item), class: "btn-primary block w-full sm:w-fit text-center" %>
+      <%= button_to 'Destroy this item', item_path(@item), method: :delete, class: "btn-secondary text-left block w-full sm:mx-2 my-2 sm:my-0 sm:w-fit text-center" %>
+      <%= link_to 'Back to items', items_path, class: "btn-secondary block w-full sm:w-fit text-center" %>
     </div>
   </div>
 </div>

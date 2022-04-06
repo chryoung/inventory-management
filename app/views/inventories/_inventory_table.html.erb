@@ -1,15 +1,15 @@
 <table class="data-table">
   <thead class="data-header">
   <tr>
-    <th class="data-header-cell"><%= t(:product) %></th>
-    <th class="data-header-cell">Quantity</th>
-    <th class="data-header-cell hidden md:table-cell">Storage</th>
-    <th class="data-header-cell hidden lg:table-cell">In stock on</th>
-    <th class="data-header-cell hidden lg:table-cell">Produced on</th>
-    <th class="data-header-cell hidden lg:table-cell">Shelf life</th>
-    <th class="data-header-cell hidden md:table-cell">Expire on</th>
+    <th class="data-header-cell"><%= t("inventories.inventory_attribute.product") %></th>
+    <th class="data-header-cell"><%= t("inventories.inventory_attribute.quantity") %></th>
+    <th class="data-header-cell hidden md:table-cell"><%= t("inventories.inventory_attribute.storage") %></th>
+    <th class="data-header-cell hidden lg:table-cell"><%= t("inventories.inventory_attribute.in_stock_on") %></th>
+    <th class="data-header-cell hidden lg:table-cell"><%= t("inventories.inventory_attribute.produced_on") %></th>
+    <th class="data-header-cell hidden lg:table-cell"><%= t("inventories.inventory_attribute.shelf_life") %></th>
+    <th class="data-header-cell hidden md:table-cell"><%= t("inventories.inventory_attribute.expire_on") %></th>
     <th class="data-header-cell"></th>
-    <th class="data-header-cell"></th>
+    <th class="data-header-cell hidden md:table-cell"></th>
   </tr>
   </thead>
   <tbody>
@@ -39,7 +39,7 @@
             <i class="fa-solid fa-drumstick-bite"></i>
           <% end %>
         </td>
-        <td class="data-cell">
+        <td class="data-cell hidden md:table-cell">
           <%= link_to edit_inventory_path(inventory), class: "hover:text-sky-500" do %>
             <i class="fa-solid fa-pen"></i>
           <% end %>

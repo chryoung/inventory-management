@@ -1,6 +1,0 @@
-en:
-  models:
-    consume_history:
-      validator:
-        over_consume_error: "The consuming quantity exceeds the current quantity."
-        consume_before_production_error: "The product cannot be consumed before it was produced."
