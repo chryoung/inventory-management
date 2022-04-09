@@ -4,6 +4,8 @@ class Inventory < ApplicationRecord
   belongs_to :storage
   has_many :consume_histories, dependent: :destroy
 
+  before_save :set_expire_on
+
   validates :in_stock_on, comparison: { greater_than_or_equal_to: :produced_on }
   validates :quantity, presence: true, numericality: { greater_than: 0 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
@@ -28,13 +30,13 @@ class Inventory < ApplicationRecord
   def self.all_in_stock
     Inventory
       .index_all
-      .having("COALESCE(SUM(consume_histories.quantity), ?) < inventories.quantity", 0)
+      .where(is_in_stock: true)
   end
 
   def self.all_exhausted
     Inventory
       .index_all
-      .having("COALESCE(SUM(consume_histories.quantity), ?) >= inventories.quantity", 0)
+      .where(is_in_stock: false)
   end
 
   def total_price
@@ -54,18 +56,8 @@ class Inventory < ApplicationRecord
     end
   end
 
-  def expire_on
-    unless produced_on.nil? or shelf_life.nil?
-      if Year?
-        return produced_on + shelf_life.years
-      elsif Month?
-        return produced_on + shelf_life.months
-      else
-        return produced_on + shelf_life.days
-      end
-    end
-
-    nil
+  def expired?
+    expire_on.present? and expire_on < Date.today
   end
 
   def total_consumption
@@ -79,4 +71,17 @@ class Inventory < ApplicationRecord
   def exhausted?
     left_quantity <= 0
   end
+
+  private
+    def set_expire_on
+      if produced_on.present? and shelf_life.present?
+        self.expire_on = if self.Year?
+                           produced_on + shelf_life.years
+                         elsif self.Month?
+                           produced_on + shelf_life.months
+                         else
+                           produced_on + shelf_life.days
+                         end
+      end
+    end
 end

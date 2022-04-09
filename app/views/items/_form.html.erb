@@ -16,13 +16,11 @@
     <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "btn-primary w-full sm:w-fit mb-2 sm:mb-0" %>
-  </div>
+  <div class="flex flex-col sm:flex-row justify-left">
+    <%= form.submit class: "btn-primary block" %>
 
-  <% if action_name != "edit" %>
-    <div class="w-full sm:w-fit">
-      <%= form.submit t("items.form.create_and_continue"), formaction: items_create_and_continue_path, class: "btn-secondary w-full" %>
-    </div>
-  <% end %>
+    <% if action_name != "edit" %>
+    <%= form.submit t("items.form.create_and_continue"), formaction: items_create_and_continue_path, class: "btn-secondary block mt-2 sm:mt-0 sm:ml-2" %>
+    <% end %>
+  </div>
 <% end %>
