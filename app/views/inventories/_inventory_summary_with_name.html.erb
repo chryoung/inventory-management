@@ -1,6 +1,6 @@
 <% inventories.each do |inventory| %>
   <% cache inventory do %>
-    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-between" do %>
+    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-left" do %>
       <span class="inline-block basis-3/5 sm:basis-3/12">
         <i class="fa-solid fa-jar"></i>
         <%= inventory.product.name %>
