@@ -6,7 +6,7 @@
 
   <div class="mb-5">
     <% if product.inventories.present? %>
-      <%= render partial: "inventories/inventory_summary", locals: { inventories: product.inventories.filter { |inv| !inv.exhausted? } } %>
+      <%= render partial: "inventories/inventory_summary", locals: { inventories: product.inventories.filter { |inv| inv.is_in_stock? } } %>
     <% end %>
   </div>
 
