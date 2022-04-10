@@ -68,8 +68,8 @@ class Inventory < ApplicationRecord
     quantity - total_consumption
   end
 
-  def exhausted?
-    left_quantity <= 0
+  def left_percentage
+    (left_quantity / quantity * 100).round(2, BigDecimal::ROUND_UP)
   end
 
   private

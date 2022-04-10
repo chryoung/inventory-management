@@ -1,0 +1,27 @@
+<% inventories.each do |inventory| %>
+  <% cache inventory do %>
+    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-between" do %>
+      <span class="inline-block basis-3/5 sm:basis-3/12">
+        <i class="fa-solid fa-jar"></i>
+        <%= inventory.product.name %>
+      </span>
+
+      <span class="hidden sm:inline-block sm:basis-4/12">
+        <i class="fa-solid fa-chart-pie"></i>
+        <%= inventory.left_percentage %>%
+      </span>
+
+      <span class="inline-block basis-2/5 sm:basis-2/12">
+        <i class="fa-solid fa-location-pin"></i>
+        <%= inventory.storage.location %>
+      </span>
+
+      <% if inventory.expire_on.present? %>
+        <span class="hidden sm:inline-block basis-3/12">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <%= inventory.expire_on %>
+        </span>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
