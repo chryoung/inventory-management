@@ -38,6 +38,7 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
   test "should show inventory" do
     get inventory_url(@inventory)
     assert_response :success
+    assert_select "#inventory_#{@inventory.id}", 1
   end
 
   test "should get edit" do
@@ -60,6 +61,10 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_redirected_to inventory_url(@inventory)
+
+    follow_redirect!
+
+    assert_select "div#inventory_#{@inventory.id}", 1
   end
 
   test "should allow empty price" do
@@ -83,5 +88,24 @@ class InventoriesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to inventories_url
+  end
+
+  test "should clear expire on after clear shelf life" do
+    get inventory_url(@inventory)
+    assert_select "#inventory_#{@inventory.id}", 1
+    assert_select "#expire_on", /\d{4}-\d{2}-\d{2}/ 
+
+    update_param = @inventory.serializable_hash
+    update_param["shelf_life"] = nil
+    patch inventory_url(@inventory), params: {
+      inventory: update_param
+    }
+
+    assert_redirected_to inventory_url(@inventory)
+
+    follow_redirect!
+    
+    assert_select "#inventory_#{@inventory.id}", 1
+    assert_select "#expire_on", ""
   end
 end

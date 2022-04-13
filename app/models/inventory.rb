@@ -82,6 +82,8 @@ class Inventory < ApplicationRecord
                          else
                            produced_on + shelf_life.days
                          end
+      else
+        self.expire_on = nil
       end
     end
 end

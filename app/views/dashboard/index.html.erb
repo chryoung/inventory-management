@@ -1,10 +1,10 @@
 <div data-controller="dashboard" class="w-full flex flex-col sm:flex-row">
-  <div class="sm:basis-1/2 border rounded-lg sm:mx-2 p-5 mb-5 last:mb-0 sm:mb-0 last:sm:mb-0">
+  <div class="lg:basis-1/2 border rounded-lg sm:mx-2 p-5 mb-5 last:mb-0 sm:mb-0 last:sm:mb-0">
     <h1 class="text-2xl mb-2 pb-1 border-b">Expired</h1>
     <%= render partial: "inventories/inventory_summary_with_name", locals: { inventories: @in_stock_expired } %>
   </div>
 
-  <div class="sm:basis-1/2 border rounded-lg sm:mx-2 p-5 mb-5 last:mb-0 sm:mb-0 last:sm:mb-0">
+  <div class="lg:basis-1/2 border rounded-lg sm:mx-2 p-5 mb-5 last:mb-0 sm:mb-0 last:sm:mb-0">
     <h1 class="text-2xl mb-2 pb-1 border-b">Recently consumed</h1>
     <%= render partial: "inventories/inventory_summary_with_name", locals: { inventories: @recently_consumed } %>
   </div>

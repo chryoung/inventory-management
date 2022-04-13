@@ -1,6 +1,6 @@
 <% inventories.each do |inventory| %>
   <% cache inventory do %>
-    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-between" do %>
+    <%= link_to inventory_path(inventory), class: "link-primary block flex justify-left" do %>
       <span class="block basis-3/5 sm:basis-2/5">
         <i class="fa-solid fa-jar"></i>
         <%= format_number(inventory.left_quantity) %>
