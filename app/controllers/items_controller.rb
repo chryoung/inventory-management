@@ -48,6 +48,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def create_with_default_product
+    @item = Item.new(item_params)
+    default_product = @item.products.build
+
+    respond_to do |format|
+      if @item.save and default_product.save
+        format.html { redirect_to item_url(@item), notice: "Item with default product was successfully created." }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /items/1 or /items/1.json
   def update
     respond_to do |format|

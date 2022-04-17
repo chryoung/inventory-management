@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :items
   post "items/create_and_continue", to: "items#create_and_continue"
+  post "items/create_with_default_product", to: "items#create_with_default_product"
 
   resources :inventories, shallow: true do
     resources :consume_histories, only: [:new, :edit, :create, :update, :destroy]

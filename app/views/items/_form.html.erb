@@ -20,6 +20,8 @@
     <%= form.submit class: "btn-primary block" %>
 
     <% if action_name != "edit" %>
+    <%= form.submit t("items.form.create_with_default_product"), formaction: items_create_with_default_product_path, class: "btn-secondary block mt-2 sm:mt-0 sm:ml-2" %>
+
     <%= form.submit t("items.form.create_and_continue"), formaction: items_create_and_continue_path, class: "btn-secondary block mt-2 sm:mt-0 sm:ml-2" %>
     <% end %>
   </div>
