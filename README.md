@@ -10,7 +10,7 @@ A mobile-friendly simple inventory management system for your home stock
 
 ## Requirement
 
-- Ruby 2.7.5
+- Ruby 3.1.1
 - Rails 7
 
 ## Usage
@@ -27,18 +27,27 @@ bin/dev
 ```bash
 RAILS_ENV=test rails assets:precompile
 rails test
-rails assets:clobber
+RAILS_ENV=test rails assets:clobber
 ```
 
 ## Screenshots
 
-![Inventories](doc/static/inventories.png)
+### Inventories desktop
 
-![Dashboard mobile](doc/static/dashboard-mobile.png)
+![Inventories desktop](doc/static/inventories.png)
 
-![Inventories mobile](doc/static/inventories-mobile.png)
+### Dashboard mobile
 
-![Item view mobile](doc/static/item-show-mobile.png)
+<img src="https://github.com/chryoung/inventory-management/raw/master/doc/static/dashboard-mobile.png" width="35%" alt="Dashboard mobile" />
 
-![New inventories mobile](doc/static/new-inventories-mobile.png)
+### Inventories mobile
 
+<img src="https://github.com/chryoung/inventory-management/raw/master/doc/static/inventories-mobile.png" width="35%" alt="Inventories mobile" />
+
+### Item view mobile
+
+<img src="https://github.com/chryoung/inventory-management/raw/master/doc/static/item-show-mobile.png" width="35%" alt="Item view mobile" />
+
+### New inventory mobile
+
+<img src="https://github.com/chryoung/inventory-management/raw/master/doc/static/new-inventories-mobile.png" width="35%" alt="New inventory mobile" />
