@@ -3,7 +3,7 @@
     <%= link_to inventory_path(inventory), class: "link-primary block flex justify-left" do %>
       <span class="inline-block basis-3/5 sm:basis-3/12">
         <i class="fa-solid fa-jar"></i>
-        <%= inventory.product.name %>
+        <%= render partial: "products/variant", locals: { product: inventory.product } %>
       </span>
 
       <span class="hidden sm:inline-block sm:basis-4/12">

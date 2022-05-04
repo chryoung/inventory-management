@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
   def name
     if variant.present?
-      "#{variant}#{item.name}"
+      "#{variant} #{item.name}"
     else
       item.name
     end

@@ -8,7 +8,11 @@
     <% item.products.each do |product| %>
       <% cache product do %>
         <div id="<%= dom_id product %>">
-          <h2 class="text-md"><%= link_to product.name, product_path(product), class: "link-primary inline-block py-2" %></h2>
+          <h2 class="text-md">
+            <%= link_to product_path(product), class: "link-primary inline-block py-3" do %>
+              <%= render partial: "products/variant", locals: { product: product } %>
+            <% end %>
+          </h2>
           <div class="ml-2">
             <%= render partial: "inventories/inventory_summary", locals: { inventories: product.in_stock_inventories } %>
           </div>
